@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dussbb4i4eq82"]
+
+[ext_resource type="Texture2D" uid="uid://bktldnpvwymm3" path="res://assets/sprites/Arena.png" id="1_olpmc"]
+[ext_resource type="PackedScene" uid="uid://8ny1nrxkmdf5" path="res://scenes/player.tscn" id="2_wl4x5"]
+[ext_resource type="PackedScene" uid="uid://dvkot0iu5jacc" path="res://scenes/enemy.tscn" id="3_olpmc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fa76"]
+size = Vector2(1152, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lltqr"]
+size = Vector2(1152, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_godrx"]
+size = Vector2(20, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whibd"]
+size = Vector2(20, 648)
+
+[node name="Arena" type="Node2D" unique_id=887047832]
+y_sort_enabled = true
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1970201972]
+position = Vector2(577.5, 312.67496)
+scale = Vector2(3.69, 3.5421665)
+texture = ExtResource("1_olpmc")
+
+[node name="WallTop" type="StaticBody2D" parent="." unique_id=1315908947]
+position = Vector2(576, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop" unique_id=1274549535]
+shape = SubResource("RectangleShape2D_7fa76")
+debug_color = Color(0.4745098, 0.5803922, 0.25490198, 0.41960785)
+
+[node name="WallBottom" type="StaticBody2D" parent="." unique_id=1457545597]
+position = Vector2(576, 638)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom" unique_id=240889409]
+shape = SubResource("RectangleShape2D_lltqr")
+debug_color = Color(0.4745098, 0.5803922, 0.25490198, 0.41960785)
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=314098377]
+position = Vector2(10, 324)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=946034462]
+shape = SubResource("RectangleShape2D_godrx")
+debug_color = Color(0.4745098, 0.5803922, 0.25490198, 0.41960785)
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=444436920]
+position = Vector2(1142, 324)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1216038954]
+shape = SubResource("RectangleShape2D_whibd")
+debug_color = Color(0.4745098, 0.5803922, 0.25490198, 0.41960785)
+
+[node name="Player" parent="." unique_id=1318792271 instance=ExtResource("2_wl4x5")]
+position = Vector2(576, 324)
+
+[node name="enemy" parent="." unique_id=1125443690 instance=ExtResource("3_olpmc")]

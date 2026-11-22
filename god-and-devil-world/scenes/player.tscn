@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://8ny1nrxkmdf5"]
+
+[ext_resource type="Script" uid="uid://defvt1pvuruej" path="res://scenes/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://sb306kqdhofu" path="res://assets/sprites/player_down.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://bu8lcmtdaqwyf" path="res://assets/sprites/player_up.png" id="3_dqkch"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7fa76"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qhqgy")
+}],
+"loop": 1,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dqkch")
+}],
+"loop": 1,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lltqr"]
+size = Vector2(49, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q873l"]
+radius = 50.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1318792271 groups=["player"]]
+position = Vector2(632, 287)
+script = ExtResource("1_3vyb7")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=642489526]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_7fa76")
+animation = &"down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=595589106]
+position = Vector2(2.5, -6)
+shape = SubResource("RectangleShape2D_lltqr")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=1741939899]
+position = Vector2(40, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=693611690]
+shape = SubResource("CircleShape2D_q873l")

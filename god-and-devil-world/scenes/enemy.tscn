@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dvkot0iu5jacc"]
+
+[ext_resource type="Script" uid="uid://cktua2ql0gfyp" path="res://scenes/enemy.gd" id="1_bsing"]
+[ext_resource type="Texture2D" uid="uid://c8km1hpl0yiep" path="res://assets/sprites/mob_down.png" id="2_d4cuo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsing"]
+size = Vector2(100.00006, 330.0003)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lltqr"]
+radius = 85.0
+height = 510.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ra3w"]
+font_size = 50
+
+[node name="enemy" type="CharacterBody2D" unique_id=1125443690 groups=["enemy"]]
+position = Vector2(100, 100)
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_bsing")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=630551976]
+texture = ExtResource("2_d4cuo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=976829977]
+position = Vector2(10.000061, -89.99991)
+scale = Vector2(0.9999989, 0.9999989)
+shape = SubResource("RectangleShape2D_bsing")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1631857563]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1057140528]
+shape = SubResource("CapsuleShape2D_lltqr")
+
+[node name="HpLabel" type="Label" parent="." unique_id=926492954]
+offset_left = -75.0
+offset_top = -355.0
+offset_right = 94.99997
+offset_bottom = -310.0
+offset_transform_enabled = true
+text = "\"5/5\""
+label_settings = SubResource("LabelSettings_4ra3w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
